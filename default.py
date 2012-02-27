@@ -114,8 +114,8 @@ def list_program(unitid):
     xbmcplugin.endOfDirectory(HANDLE)
 
 
-def add_posts(title, url, description='', thumb='', isPlayable='true', isLive='true', isFolder=False, artist='', album\
-=''):
+def add_posts(title, url, description='', thumb='', isPlayable='true', isLive='true', isFolder=False, artist='',\
+              album=''):
     title = title.replace("\n", " ")
     listitem=xbmcgui.ListItem(title, iconImage=thumb)
     listitem.setInfo(type='music', infoLabels={'title': title, 'artist': artist, 'album': album})
@@ -139,15 +139,15 @@ def add_main_menu():
 
 
 def get_node_value(parent, name, ns=""):
-	if ns:
-		if parent.getElementsByTagNameNS(ns, name) and \
-			    parent.getElementsByTagNameNS(ns, name)[0].childNodes:
-			return parent.getElementsByTagNameNS(ns, name)[0].childNodes[0].data
-	else:
-		if parent.getElementsByTagName(name) and \
-			    parent.getElementsByTagName(name)[0].childNodes:
-			return parent.getElementsByTagName(name)[0].childNodes[0].data
-	return None
+    if ns:
+        if parent.getElementsByTagNameNS(ns, name) and \
+                parent.getElementsByTagNameNS(ns, name)[0].childNodes:
+            return parent.getElementsByTagNameNS(ns, name)[0].childNodes[0].data
+    else:
+        if parent.getElementsByTagName(name) and \
+                parent.getElementsByTagName(name)[0].childNodes:
+            return parent.getElementsByTagName(name)[0].childNodes[0].data
+    return None
 
 def load_xml(url):
     try:
