@@ -80,10 +80,10 @@ def list_program(unitid):
             type = url.getAttribute("type")
             protocol = url.getAttribute("protocol")
             quality = url.getAttribute("quality")
-            if type == "m4a" and protocol == "rtsp" and quality == "high":
+            if type == "m4a" and protocol == "http" and quality == "high":
                 base = url.childNodes[0].data
         if base == "":
-            base = "rtsp://mobil-live.sr.se[broadcastfilename]_a192.m4a"
+            base = "http://sverigesradio.se/topsy/ljudfil/utan/statistik/[broadcastid].m4a"
             xbmc.log("Couldn't find url template, go with known (" + base + ")")
         for audio in doc.getElementsByTagName("item"):
             for ondemand in audio.getElementsByTagName("ondemand"):
@@ -105,10 +105,10 @@ def list_program(unitid):
                 else:
                     thumb = ''
                 for broadcast in ondemand.getElementsByTagName("broadcastfilename"):
-                    #broadcastid = broadcast.getAttribute("broadcastid").encode('utf_8')                               
-                    broadcastname = broadcast.childNodes[0].data.encode('utf_8')
-                    # rtsp://mobil-live.sr.se[broadcastfilename]_a192.m4a                                              
-                    url = base.replace("[broadcastfilename]", broadcastname)
+                    broadcastid = broadcast.getAttribute("broadcastid").encode('utf_8')                               
+                    # broadcastname = broadcast.childNodes[0].data.encode('utf_8')
+                    url = base.replace("[broadcastid]", broadcastid)
+                    print url
                     add_posts(title, url, description, thumb, artist='Sveriges Radio', album=originaltitle)
     else:
         if state == "site":
