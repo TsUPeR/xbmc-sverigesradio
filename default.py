@@ -104,7 +104,6 @@ def list_program(unitid):
                     broadcastid = broadcast.getAttribute("broadcastid").encode('utf_8')                               
                     # broadcastname = broadcast.childNodes[0].data.encode('utf_8')
                     url = base.replace("[broadcastid]", broadcastid)
-                    print url
                     add_posts(title, url, description, thumb, artist='Sveriges Radio', album=originaltitle)
     else:
         if state == "site":
