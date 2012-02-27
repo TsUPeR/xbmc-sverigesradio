@@ -14,9 +14,6 @@ BASE_URL = "http://sr.se"
 
 __settings__ = xbmcaddon.Addon(id='plugin.audio.sverigesradio')
 
-
-
-
 def list_channels():
     doc, state = load_xml(CHANNEL_URL)
     if doc and not state:
@@ -74,8 +71,7 @@ def list_program(unitid):
     doc, state = load_xml(PROGRAM_DETAIL_URL+unitid)
     if doc and not state:
         urlset = doc.getElementsByTagName("urlset")[0]
-        base = ""
-# type="m4a" protocol="rtsp" quality="high"                                                                            
+        base = ""                                                                         
         for url in urlset.getElementsByTagName("url"):
             type = url.getAttribute("type")
             protocol = url.getAttribute("protocol")
